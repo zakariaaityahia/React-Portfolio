@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import menu from "../Images/menu.png" 
 import 'aos/dist/aos.css';
+import { motion, useScroll } from "framer-motion";
 
 
 export function NavBar() {
@@ -10,11 +11,21 @@ export function NavBar() {
     const onUpdateActiveLink = (value) => {
         setActiveLink(value)
     }
+    const [shadow, setShadow] = useState(false)
+
+    function SetChange() {
+        if (window.screenY >= 90) {
+            setShadow(true)
+        } else {
+            setShadow(false)
+        }
+    }
+    window.addEventListener("scroll", SetChange);
+
+    const { scrollYProgress } = useScroll();
 
   return (
-    <Navbar expand="lg" data-aos="fade-down" data-aos-anchor="#example-anchor"
-    data-aos-offset="500"
-    data-aos-duration="1000">
+    <Navbar expand="lg" data-aos="fade-down" data-aos-anchor="#example-anchor" data-aos-offset="500"data-aos-duration="1000" className={shadow ? 'barShadow'  : ''}>
         <Container>
             <Navbar.Brand href="#home" style={{fontSize: "18px", fontWeight: "800", fontStyle: "italic", color: "#EE4E34"}}>
                 JACK<br/>WATSON.      
@@ -29,7 +40,10 @@ export function NavBar() {
                     <Nav.Link href="#home" className={activeLink === "Projects" ? 'active nav-link' : 'nav-link'} onClick={() => onUpdateActiveLink('projects')}>Projects</Nav.Link>
                     <button className='navbar-button text-center' onClick={() => console.log('connect')}>Let's Connect</button>
                 </Nav>
-            </Navbar.Collapse>
+              </Navbar.Collapse>
+              <motion.div className="progress-bar"
+                    style={{ scaleX: scrollYProgress }}
+                />
         </Container>
     </Navbar>
   )
