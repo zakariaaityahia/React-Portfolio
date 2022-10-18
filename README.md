@@ -1,8 +1,3 @@
-Section 1 
-![Untitled](https://user-images.githubusercontent.com/103770059/195883128-09e1a111-1d64-4ff8-89ba-355bf026c25e.png)
-after Coding 
-![2022-10-14 16 25 20](https://user-images.githubusercontent.com/103770059/195883862-47eacb88-e1a6-4a33-b54d-1b5c558bf846.png)
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
